@@ -1,13 +1,96 @@
 <!doctype html>
 
 <html>
-	<head>
-		<!-- here goes the metadata -->
-		<meta charset="utf-8">
-		<title>Warehouse</title>
-		 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	</head>
-	<body>
+<head>
+	<!-- here goes the metadata -->
+	<meta charset="utf-8">
+	<title>Warehouse</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<header>
+			<h1>Welcome to the warehouse manager</h1>
+		</header>
 
+		<!-- row contenente la tabella -->
+		<div class="row">
+			<div class="col-md-3">
+				<table class="table table-bordered" id="itemTable">
+					<tr>
+						<th>Item</th>
+						<th>Quantity</th> 
+					</tr>
+					<tr>
+						<td>banana</td>
+						<td>5</td>
+					</tr>
+					<tr>
+						<td>apple</td>
+						<td>3</td>
+					</tr>
+
+				</table>
+			</div>
+			<!-- colonna che mostra la quantità attualmente occupata nel magazzino -->
+			<div class="col-md-1">
+				<div>
+					<label>Storage quantity:</label>
+					<p id="storageQT" class="text-center" style="font-family: times-new-roman; font-size: 25px;">8</p>
+				</div>
+			</div>
+		</div>
+		
+		<!-- row contenente il bottone per mostrare i comandi per aggiungere un item-->
+		<div class="row">
+			<button class="btn btn-info btn-lg" onclick="showOrderItem()">Show: order item</button>
+		</div>
+
+		<br>
+		<!-- row contenente i comandi per aggiungere un item, nascosta di default -->
+		<div class="row" id="ROW_order_item" style="display: none;">
+			<!-- <script src="script.js"></script> -->
+			<div class="col-md-1">
+				<button class="btn btn-success btn-md" onclick="orderItem()">order item</button>
+			</div>
+			<form id="inputForm">
+				<div class="col-md-1">
+					<div class="form-group">
+						<label>Name:</label>
+						<input type="text" class="form-control" id="item_name">
+					</div>
+				</div>
+
+				<div class="col-md-1">
+					<div class="form-group">
+						<label>Quantity:</label>
+						<input type="number" class="form-control" id="item_quantity">
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<br><br><br>
+
+		<!-- row contenente il bottone per mostrare i comandi per aggiornare lo storage quantity -->
+		<div class="row">
+			<button class="btn btn-info btn-lg" onclick="showUpdateStorage()">Show: update storage</button>
+		</div>
+
+		<br>
+
+		<!-- row contenente i comandi per aggiornare lo storage quantity -->
+		<div class="row" id="ROW_update_storage" style="display: none;">
+			<div class="col-md-1">
+				<button class="btn btn-success btn-md" onclick="updateStorage()">Update</button>
+			</div>
+			<div class="col-md-1">
+				<div class="form-group">
+					<label >Storage space:</label>
+					<input type="number" class="form-control" id="storageSpace" value="30">
+				</div>
+			</div>
+		</div>
+	</div>
 	</body>
 </html>
