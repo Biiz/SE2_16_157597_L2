@@ -110,4 +110,43 @@
  * @brief Function that insert the item and the quantity from the text input in the table
  */
 	function orderItem() {
+
+		//get the table
+		table = document.getElementById("itemTable");
+
+		//get the element i want to add in the table 
+		orderIT = document.getElementById("item_name").value;
+		orderQT = document.getElementById("item_quantity").value;
+		
+		//controllo che entrambi i campi non siano vuoti
+		if(orderIT != '' && orderQT != ''){
+
+			//controllo se l'oggetto è già presente
+			if(in_cart_item.indexOf(orderIT) > -1){
+				//lo cerco
+				for(var i=0; i< in_cart_item.length; i++){
+					//quando trovo la posizione ne aggiorno il prezzo nella lista e nella tabella
+					if(in_cart_item[i] == orderIT.toString()){
+						in_cart_quantity[i] = parseInt(in_cart_quantity[i]) + parseInt(orderQT);
+						//table.rows[i+1].cells[1].innerHTML = parseInt(in_cart_quantity[i]);
+						document.getElementById("itemTable").rows[i+1].cells[1].innerHTML = parseInt(in_cart_quantity[i]);
+						updateQuantity();
+						clearInput();
+					}
+				}
+			}
+			//altrimenti inserisco il nuovo item
+			else{
+				aggiornaListe();
+				addRow();
+				updateQuantity();
+				clearInput();
+			}	
+		}
+		else{
+			alert("input non validi");
+			alertQuantity();
+
+			
+		}
 	}
