@@ -105,3 +105,9 @@
 		storageSP = document.getElementById("storageSpace").value;
 		alertQuantity();
 	}
+
+/**
+ * @brief Function that insert the item and the quantity from the text input in the table
+ */
+	function orderItem() {
+	}
